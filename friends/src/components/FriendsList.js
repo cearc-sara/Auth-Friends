@@ -1,32 +1,33 @@
-import React, {useState} from 'react';
-import Loader from 'react-loader-spinner';
+import React, { useEffect, useState } from "react";
+import Loader from "react-loader-spinner";
 
-import {axiosWithAuth} from '../utils/axiosWithAuth';
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-function FriendsList () {
-    const [friends, setFriends] = useState([])
+function FriendsList() {
+  const [friends, setFriends] = useState([]);
 
-    const getFriends = () => {
-        axiosWithAuth()
-            .get('/api/friends')
-            .then(res => {
-                console.log(res)
-                setFriends(res.data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
+  useEffect(() => {
+    axiosWithAuth()
+      .get("/api/friends")
+      .then((res) => {
+        console.log(res.data);
+        setFriends(res.data);
+        console.log(friends)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-    setFriends(getFriends)
-
-    return(
-<div>
-    <h2>Friends List</h2>
+  return (
     <div>
-        <p>{friends.name}</p>
+      <h2>Friends List</h2>
+      {friends.map(friend => (<div>
+        <h3 key={friend.id}>{friend.name}</h3>
+        <p>{friend.age}</p>
+        <p>{friend.email}</p>
+      </div>))}
     </div>
-</div>
-    )
+  );
 }
-export default FriendsList
+export default FriendsList;
