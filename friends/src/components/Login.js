@@ -1,5 +1,5 @@
-import React, {useState, useHistory} from "react";
-
+import React, {useState} from "react";
+import {useHistory} from 'react-router'
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const initialValue = {
@@ -11,7 +11,7 @@ const initialValue = {
 
 function Login() {
   const [credentials, setCredentials] = useState(initialValue)
-  let history = useHistory
+  let history = useHistory()
 
  const handleChange = (e) => {
     setCredentials({...credentials, [e.target.name]: e.target.value});

@@ -13,7 +13,6 @@ function FriendsList() {
       .then((res) => {
         console.log(res.data);
         setFriends(res.data);
-        console.log(friends)
       })
       .catch((err) => {
         console.log(err);
@@ -23,12 +22,13 @@ function FriendsList() {
   return (
     <div>
       <h2>Friends List</h2>
-      {friends.map(friend => (<div>
+      {friends.map(friend => {
+        return(<div>
         <h3 key={friend.id}>{friend.name}</h3>
         <p>{friend.age}</p>
         <p>{friend.email}</p>
-      </div>))}
-      <FriendForm/>
+      </div>)})}
+      <FriendForm friends={friends} setFriends={setFriends}/>
     </div>
   );
 }
