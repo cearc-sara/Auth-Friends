@@ -4,6 +4,8 @@ import FriendForm from '../forms/FriendForm'
 
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
+import '../App.css'
+
 function FriendsList() {
   const [friends, setFriends] = useState([]);
 
@@ -20,15 +22,17 @@ function FriendsList() {
   }, []);
 
   return (
-    <div>
+    <div >
       <h2>Friends List</h2>
+      <div className='list'>
       {friends.map(friend => {
-        return(<div>
+        return(<div className='friend-card'>
         <h3 key={friend.id}>{friend.name}</h3>
         <p>{friend.age}</p>
         <p>{friend.email}</p>
       </div>)})}
       <FriendForm friends={friends} setFriends={setFriends}/>
+      </div>
     </div>
   );
 }
