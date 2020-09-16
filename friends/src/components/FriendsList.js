@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Loader from "react-loader-spinner";
+import FriendForm from '../forms/FriendForm'
 
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
@@ -27,6 +28,7 @@ function FriendsList() {
         <p>{friend.age}</p>
         <p>{friend.email}</p>
       </div>))}
+      <FriendForm/>
     </div>
   );
 }

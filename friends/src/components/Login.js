@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useHistory} from "react";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
@@ -7,9 +7,11 @@ const initialValue = {
   password: ''
 }
 
+
+
 function Login() {
   const [credentials, setCredentials] = useState(initialValue)
-  
+  let history = useHistory
 
  const handleChange = (e) => {
     setCredentials({...credentials, [e.target.name]: e.target.value});
@@ -22,7 +24,7 @@ function Login() {
       .post("/api/login", credentials)
       .then((res) => {
         localStorage.setItem("token", res.data.payload);
-        // this.props.history.push("/protected");
+        history.push("/protected");
       })
       .catch((err) => {
         console.log(err)
