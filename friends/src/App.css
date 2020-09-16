@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+}
+
+li{
+  list-style: none;
+}
+
+.list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  justify-content: space-around;
+}
+
+.friend-card {
+  background-color: #282c34;
+  margin:2%;
+  width:40%;
+  border-radius:20px;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  border:2px solid black;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
